@@ -13,17 +13,26 @@ var app = express();
 // End
 
 // connect to the database
-mongoose.connect('mongodb://localhost/Angular_RESTFUL_TEST');
+mongoose.connect('mongodb://localhost/Algorithm_revised');
 // End
 
 //Example MODEL
-var userSchema = new mongoose.Schema({
-  name:'string'
+var algorithmSchema = new mongoose.Schema({
+  name:'string',
+  problem:'string',
+  solution_generic:'string',
+  solution_time_optimized:'string',
+  solution_memory_optimized:'string',
+  solution_php:'string',
+  solution_python:'string',
+  solution_ruby:'string',
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
 });
 
-var user = mongoose.model('User', userSchema);
+var algorithms = mongoose.model('Algorithm', algorithmSchema);
 /* Load Model */
-var User = mongoose.model('User');
+var Algorithm = mongoose.model('Algorithm');
 // Controller
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,16 +41,16 @@ app.use(express.static(path.join(__dirname, './public')));
 app.listen(8000, function(){});
 
 //CREATE CONTROLLLER and routes (example)
-var Users_Controller = new BuildController(User, "users", ['name']);
-var Users_Controller_JSON = new BuildControllerJSON(User, "users", ['name']);
+var Algorithms_Controller = new BuildController(Algorithm, "algorithms", ['name', 'problem']);
+var  Algorithms_Controller_JSON = new BuildControllerJSON(Algorithm, "algorithms", ['name', 'problem']);
 
 //routes for controller
-routesTemplate(app, Users_Controller, "users");
-routesTemplate(app, Users_Controller_JSON, "users", "json");
+routesTemplate(app,  Algorithms_Controller, "algorithms");
+routesTemplate(app,  Algorithms_Controller_JSON, "algorithms", "json");
 //end
 
 
-// 
+//
 
 
 // End of Routing
