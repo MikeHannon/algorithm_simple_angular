@@ -1,0 +1,21 @@
+<!-- name:'string',
+problem:'string',
+solution_generic:'string',
+solution_time_optimized:'string',
+solution_memory_optimized:'string',
+solution_php:'string',
+solution_python:'string',
+solution_ruby:'string',
+access_key:'string', -->
+<form ng-model = 'algorithm'>
+  <input type = 'text' ng-model='algorithm.name' placeholder= 'name'>
+  <input type = 'text' ng-model='algorithm.access_key' placeholder = 'access_key'>
+  <textarea type = 'text' ng-model='algorithm.problem' placeholder = 'problem description'></textarea>
+  <textarea type = 'text' ng-model='algorithm.solution_generic' placeholder = 'general solution'></textarea>
+  <textarea type = 'text' ng-model='algorithm.solution_time_optimized' placeholder = 'time optimized solution'></textarea>
+  <textarea type = 'text' ng-model='algorithm.solution_php' placeholder = 'PHP solution'></textarea>
+  <textarea type = 'text' ng-model='algorithm.solution_python' placeholder = 'Python solution'></textarea>
+  <textarea type = 'text' ng-model='algorithm.solution_ruby' placeholder = 'Ruby solution'></textarea>
+
+</form>
+<button ng-if ="algorithm.name && algorithm.access_key && algorithm.problem  && algorithm.solution_generic"  ng-click = "create_button(algorithm)">Create Algorithm</button>

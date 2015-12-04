@@ -26,8 +26,9 @@ var algorithmSchema = new mongoose.Schema({
   solution_php:'string',
   solution_python:'string',
   solution_ruby:'string',
+  access_key:'string',
   created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now }
 });
 
 var algorithms = mongoose.model('Algorithm', algorithmSchema);

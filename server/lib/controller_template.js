@@ -2,8 +2,8 @@
 var path = require('path');
 
 module.exports = (function(model_name, model_string_name, update_array) {
-    console.log(__dirname);
-// 
+    console.log(__dirname, model_string_name);
+//
   return {
     index : function(req, res) {
       model_name.find({}, function(err, data){
@@ -16,7 +16,7 @@ module.exports = (function(model_name, model_string_name, update_array) {
 
     create : function(req,res){
       console.log(req.body);
-      user = new model_name({name:'mike'}); // TEST CODE
+      user = new model_name(req.body); // TEST CODE
       user.save();
       res.sendFile(path.join(__dirname, './../../public/'+model_string_name+'/create.html'));
     }, // end of create

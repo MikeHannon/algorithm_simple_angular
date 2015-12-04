@@ -1,4 +1,4 @@
-app.factory('userFactoryJSON', ['$http', function($http) {
+app.factory('algorithmFactoryJSON', ['$http', function($http) {
   var that = this;
   var urlBase = '/api/';
   var return_data = { index : "index",      //JSON with all users
@@ -12,10 +12,9 @@ app.factory('userFactoryJSON', ['$http', function($http) {
                     };
   //Callbacks//
   //Process Data Callback; [param] = key of return_data as a string
-  var processData = function (response, param){return_data[param] = response.data; console.log(response.data)}
+  var processData = function (response, param){return_data[param] = response.data;}
   //Error Callback
   var errorCallback = function(response){return_data.errors = response}
-  console.log("here");
   return{
 
    index: function () {
@@ -30,8 +29,13 @@ app.factory('userFactoryJSON', ['$http', function($http) {
      $http.get(urlBase + id).then(function(response){processData(response,'show')}, errorCallback);
    },
 
-   create: function (user) {
-     $http.post(urlBase, user).then(function(response){processData(response,'create')}, errorCallback);
+   create: function (data) {
+     for (element in data){
+       console.log(data[element]);
+       var new_element = data[element].split("↵").join('');
+       console.log(new_element);
+     }
+     $http.post(urlBase, data).then(function(response){processData(response,'create')}, errorCallback);
    },
 
    update: function (user) {
