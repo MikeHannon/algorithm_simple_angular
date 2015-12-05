@@ -30,11 +30,6 @@ app.factory('algorithmFactoryJSON', ['$http', function($http) {
    },
 
    create: function (data) {
-     for (element in data){
-       console.log(data[element]);
-       var new_element = data[element].split("↵").join('');
-       console.log(new_element);
-     }
      $http.post(urlBase, data).then(function(response){processData(response,'create')}, errorCallback);
    },
 

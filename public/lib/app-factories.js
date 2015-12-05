@@ -31,21 +31,6 @@ app.factory('algorithmFactory', ['$http', function($http) {
    },
 
    create: function (data) {
-     console.log('CREATE!!!');
-    //  for (element in data){
-    //    console.log(data[element]);
-    //    data[element] = data[element].replace(/(\r\n|\n|\r)/gm," ");
-    //    for (var i = 0; i < data[element].length; i ++){
-    //      console.log(data[element][i]);
-    //      if (data[element][i] == "↵"){
-    //        console.log('yikes');
-    //      }
-    //    }
-      //  var new_element = data[element].replace(/\u21b5/g,'</br>');
-      //  new_element = data[element].split("↵").join('');
-      //  console.log(new_element);
-      //  data[element] = new_element;
-    // }
      $http.post(urlBase, data).then(function(response){processData(response,'create')}, errorCallback);
    },
 
