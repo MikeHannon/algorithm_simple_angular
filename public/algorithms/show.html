@@ -1,4 +1,44 @@
-<p>{{data_setJSON.show.name}}</p>
-<p>{{data_setJSON.show.problem}}</p>
-<p>{{data_setJSON.show.solution_generic}}</p>
+  <div id = 'right_column_top'>
+    <p>{{data_setJSON.show.name}}</p>
+    <p>{{data_setJSON.show.problem}}</p>
+    <input ng-model = 'test_code' placeholder = 'access code'>
+    <input id = 'mymirror' type = 'hidden' ng-value = "data_setJSON.show.solution_generic">
+  </div>
+
+  <div ng-if = "data_setJSON.show.access_key == test_code" id = 'right_column_bottom'>
+    <textarea id = 'mirror' ng-value = "data_setJSON.show.solution_generic"></textarea>
+  </div>
+
+  <script>
+
+
+
+
+    window.setInterval(function(){
+      var myTextArea = document.getElementById('mirror');
+      if (myTextArea){
+        var myCodeMirror = CodeMirror(
+          function(elt){
+            myTextArea.parentNode.replaceChild(elt, myTextArea);
+          }
+         ,{
+            value:'hello',
+            lineNumbers: true,
+            smartIndent: true,
+            lineNumbers:true,
+            autoFormat:true,
+            mode: "javascript",
+            theme:"cobalt"
+          }
+        );
+      }
+      var random = $('#mymirror').val();
+      if (random && myCodeMirror){
+        myCodeMirror.setValue(random);
+      }
+    },100);
+
+  </script>
+
+
 <!--  -->

@@ -3,22 +3,30 @@
 <head >
   <meta charset="UTF-8">
   <link type="text/css" rel = "stylesheet" href = "/assets/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
   <script src = "/lib/app.js"></script>
   <script src = "/lib/app-factories.js"></script>
   <script src = "/lib/app-factoriesJSON.js"></script>
   <script src = "/lib/app-controllers.js"></script>
   <script src = "/lib/app-directives.js"></script>
+  <link rel="stylesheet" href="/assets/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="/assets/codemirror/theme/cobalt.css">
+  <script src="/assets/codemirror/lib/codemirror.js"></script>
+  <script src="/assets/codemirror/mode/javascript/javascript.js"></script>
+
   <title>Document</title>
 </head>
+
 <!--  -->
 <body ng-app = "app">
 
+
   <div id="simple" ng-controller="algorithmController">
-    <p ng-if = "y.name == 'Mikey'" ng-bind = "y.name"></p>
-    <button ng-click = "index_button()">index button</button>
-    <button ng-click = "new_button()">new button</button>
-    <button ng-click = "show_button('56365167664916df13b34375')">show button</button>
+    <header>
+      <button ng-click = "index_buttonJSON()">index button</button>
+      <button ng-click = "new_button()">new button</button>
+    </header>
     <!-- <button ng-click = "update_button({id:'56365167664916df13b34375', name: 'john'})">update button</button>
     <button ng-click = "edit_button('56365167664916df13b34375')">edit button</button>
     <button ng-click = "delete_button('56365167664916df13b34375')">delete button</button> -->
@@ -30,19 +38,44 @@
     <button ng-click = "update_buttonJSON({id:'56365167664916df13b34375', name: 'john'})">update buttonJSON</button>
     <button ng-click = "edit_buttonJSON('56365167664916df13b34375')">edit buttonJSON</button>
     <button ng-click = "delete_buttonJSON('56365167664916df13b34375')">delete buttonJSON</button> -->
+    <div id = 'left_column' >
+      <div ng-html-compile = "data_set.index" ></div>
+    </div>
+    <div id = 'right_column'>
+      <div ng-if = "show_show != 'False'" ng-html-compile = "data_set.show" ></div>
+      <div ng-if = "show_new != 'False'" ng-html-compile = "data_set.new" ></div>
+    </div>
 
-  <div ng-html-compile = "data_set.index" ></div>
-  <div ng-html-compile = "data_set.new" ></div>
-  <div ng-html-compile = "data_set.create" ></div>
-  <div ng-html-compile = "data_set.show" ></div>
+  <!-- <div ng-html-compile = "data_set.create" ></div> -->
+
+
+  <!--
   <div ng-html-compile = "data_set.edit" ></div>
   <div ng-html-compile = "data_set.update" ></div>
   <div ng-html-compile = "data_set.delete" ></div>
-  <div ng-html-compile = "data_set.errors" ></div>
+  <div ng-html-compile = "data_set.errors" ></div> -->
 
 
 </div>
 
 
+
 </body>
+<script>
+
+$(document).on('change', function(){
+//   console.log('hello');
+//   var myTextArea = document.getElementById('mirror');
+//   // var editor = CodeMirror.fromTextArea(textArea);
+//   var myCodeMirror = CodeMirror(function(elt) {
+//   myTextArea.parentNode.replaceChild(elt, myTextArea);
+// }, {value: myTextArea.value,
+//
+//   });
+
+
+});
+
+</script>
+
 </html>
