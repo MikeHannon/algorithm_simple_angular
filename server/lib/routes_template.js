@@ -1,6 +1,6 @@
 module.exports = (function(app, controller, path, json){
   if (!json){
-  console.log('/api/'+path, "BASE PATH");
+  // console.log('/api/'+path, "BASE PATH");
   app.get('/api/'+path, controller.index);
   app.get('/api/'+path+'/new', controller.new);
   app.get('/api/'+path+'/:id/edit', controller.edit);
@@ -10,7 +10,7 @@ module.exports = (function(app, controller, path, json){
   app.delete('/api/'+path+'/:id', controller.delete);
   }
   else {
-    console.log('/api/json/'+path, "JSON BASE PATH");
+    // console.log('/api/json/'+path, "JSON BASE PATH");
     app.get('/api/json/'+path, controller.index);
     app.get('/api/json/'+path+'/new', controller.new);
     app.get('/api/json/'+path+'/:id/edit', controller.edit);
